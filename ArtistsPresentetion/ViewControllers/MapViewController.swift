@@ -57,7 +57,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIPopoverPresentat
             locationButton.tintColor = #colorLiteral(red: 0.6600925326, green: 0.2217625678, blue: 0.3476891518, alpha: 1)
         default:
             myMapView.mapType = .hybrid
-            locationButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            locationButton.tintColor =  _ColorLiteralType(red: 1, green: 1, blue: 1, alpha: 1)
         }
     }
     
@@ -195,6 +195,5 @@ extension MapViewController{
             }
         }
     }
+
 }
-
-

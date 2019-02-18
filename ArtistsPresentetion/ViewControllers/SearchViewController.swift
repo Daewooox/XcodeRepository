@@ -30,6 +30,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchResultsLabel: UILabel!
     @IBOutlet weak var searchSpinner: UIActivityIndicatorView!
     @IBOutlet weak var presentationView: UIView!
+
     @IBOutlet weak var artistImage: UIImageView!{
         didSet{
             artistImage.clipsToBounds = true
@@ -189,6 +190,7 @@ class SearchViewController: UIViewController {
         }, completion: nil)
     }
     
+    // Работа с интернетом операциями должна быть отделенна от логики конкретного контроллера. Надо вынести всю логику связанную с запросами в отдельный класс(так называемый менеджер). Это надо для разделенности кода, чтоб он состоял из четко логически разбитых модулей.
     func searchAndPresentArtist(){
         hidePresentationView()
         InternetDataManager.shared.getArtist(viewController: self, searchText: SearchViewController.shared.currentSearchText) { (error, artist) in
@@ -274,3 +276,4 @@ extension SearchViewController: UISearchBarDelegate {
         }
     }
 }
+
