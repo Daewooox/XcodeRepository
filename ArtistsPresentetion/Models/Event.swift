@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Event: Codable {
+class Event: Codable { // Для хранения данных лучше использовать структуру, т.к это тип значения
     
     private var id: String?
     private var artistID: String?

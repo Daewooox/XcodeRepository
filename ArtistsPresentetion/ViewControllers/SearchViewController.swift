@@ -59,6 +59,17 @@ class SearchViewController: UIViewController {
     @IBAction func addToFavorites(_ sender: UIButton) {
         if SearchViewController.shared.isInDataBase {
             CoreDataManager.instance.deleteObject(withName: artistNameLabel.text!, forEntity: "FavoriteArtist") {
+                //во многих местах создаешь картинку для кнопки, можно создавать один экземпляр и этого нам будет достаточно. например так:
+//                enum ButtonImage {
+//                    case add
+//                    case remove
+//                    var image: UIImage {
+//                        switch self {
+//                        case .add: return UIImage(named: "add.png")!
+//                        case .remove: return UIImage(named: "remove.png")!
+//                        }
+//                    }
+//                  }
                 if let image = UIImage(named: "addButton.svg") {
                     self.addAndRemoveButton.setImage(image, for: .normal)
                 }
@@ -190,7 +201,6 @@ class SearchViewController: UIViewController {
         }, completion: nil)
     }
     
-    // Работа с интернетом операциями должна быть отделенна от логики конкретного контроллера. Надо вынести всю логику связанную с запросами в отдельный класс(так называемый менеджер). Это надо для разделенности кода, чтоб он состоял из четко логически разбитых модулей.
     func searchAndPresentArtist(){
         hidePresentationView()
         InternetDataManager.shared.getArtist(viewController: self, searchText: SearchViewController.shared.currentSearchText) { (error, artist) in

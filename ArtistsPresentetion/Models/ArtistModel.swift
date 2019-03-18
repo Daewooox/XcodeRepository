@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Artist: Codable{
+class Artist: Codable{ // Для хранения данных лучше использовать структуру, т.к это тип значения
     
     private var thumbURL = String()
     private var mbID = String()
